@@ -22,5 +22,40 @@ function App() {
     </div>
   );
 }
+function Animal() {
+  return (
+      <div>
+        Roger
+      </div>
+  )
+}
 
-export default App;
+class AnimalList extends React.Component {
+  render() {
+    const animal = <Animal
+
+      name="Roger"
+
+
+
+    />;
+    return (
+        <div>
+          {animal}
+        </div>
+    );
+
+  }
+}
+
+// class Animal extends React.Component {
+//   render() {
+//     return (
+//       <div>
+//         {this.name}
+//       </div>
+//     );
+//   }
+// }
+
+export default Animal;
