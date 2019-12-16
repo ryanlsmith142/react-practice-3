@@ -3,21 +3,15 @@ import './App.css';
 import animals from './seed.js';
 
 class AnimalList extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            animals: [],
-        };
-
-        this.handleLikeCount = this.handleLikeCount.bind(this);
-    }
+    state = {
+        animals: [],
+    };
 
     componentDidMount() {
         this.setState({animals: animals});
     }
 
-    handleLikeCount(animalId) {
+    handleLikeCount = (animalId) => {
         const nextAnimals = this.state.animals.map((animal) => {
             if (animal.id === animalId) {
                 return Object.assign({}, animal, {
@@ -30,7 +24,7 @@ class AnimalList extends React.Component {
         this.setState({
            animals: nextAnimals,
         });
-    }
+    };
 
   render() {
     const animals = this.state.animals.sort((a, b) => (
