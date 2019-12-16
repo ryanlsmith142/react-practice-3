@@ -9,6 +9,8 @@ class AnimalList extends React.Component {
         this.state = {
             animals: [],
         };
+
+        this.handleLikeCount = this.handleLikeCount.bind(this);
     }
 
     componentDidMount() {
@@ -16,15 +18,30 @@ class AnimalList extends React.Component {
     }
 
     handleLikeCount(animalId) {
-        console.log(animalId + 'was liked.');
+        const nextAnimals = this.state.animals.map((animal) => {
+            if (animal.id === animalId) {
+                return Object.assign({}, animal, {
+                    votes: animal.votes + 1,
+                });
+            } else {
+                return animal;
+            }
+        });
+        this.setState({
+           animals: nextAnimals,
+        });
     }
 
   render() {
+    const animals = this.state.animals.sort((a, b) => (
+        b.votes - a.votes
+    ));
     const animalComponents = animals.map((animal) => (
         <Animal
             id={animal.id}
             name={animal.name}
             type={animal.type}
+            votes={animal.votes}
             onLike={this.handleLikeCount}
         />
         ));
@@ -52,10 +69,10 @@ class Animal extends React.Component {
       <div className='item'>
           {this.props.name}
           {this.props.type}
+          {this.props.votes}
           <a onClick={this.handleLike}>
               <i className={'large caret up icon'}/>
           </a>
-          {this.props.votes}
       </div>
     );
   }
