@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import animals from './seed.js';
+import generateLikeCount from './seed.js';
 
 class AnimalList extends React.Component {
     constructor(props) {
