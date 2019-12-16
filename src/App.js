@@ -16,17 +16,22 @@ class AnimalList extends React.Component {
         this.setState({animals: animals});
     }
 
+    handleLikeCount(animalId) {
+        console.log(animalId + 'was liked.');
+    }
+
   render() {
     const animalComponents = animals.map((animal) => (
         <Animal
             id={animal.id}
             name={animal.name}
             type={animal.type}
+            onLike={this.handleLikeCount}
         />
         ));
 
     return (
-        <div>
+        <div className='ui unstackable items'>
           {animalComponents}
         </div>
     );
@@ -35,6 +40,14 @@ class AnimalList extends React.Component {
 }
 
 class Animal extends React.Component {
+  constructor(props) {
+      super(props);
+
+      this.handleLike = this.handleLike().bind(this);
+  }
+  handleLike() {
+      this.props.onLike(this.props.id);
+  }
   render() {
     return (
       <div>
