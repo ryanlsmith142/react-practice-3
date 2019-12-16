@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import animals from './seed.js';
-import generateLikeCount from './seed.js';
 
 class AnimalList extends React.Component {
     constructor(props) {
@@ -43,16 +42,20 @@ class Animal extends React.Component {
   constructor(props) {
       super(props);
 
-      this.handleLike = this.handleLike().bind(this);
+      this.handleLike = this.handleLike.bind(this);
   }
   handleLike() {
       this.props.onLike(this.props.id);
   }
   render() {
     return (
-      <div>
+      <div className='item'>
           {this.props.name}
           {this.props.type}
+          <a onClick={this.handleLike}>
+              <i className={'large caret up icon'}/>
+          </a>
+          {this.props.votes}
       </div>
     );
   }

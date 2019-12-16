@@ -7,11 +7,13 @@ function generateLikeCount() {
 const animals = [{
     id: 1,
     name: "Ava",
-    type: "Dog"
+    type: "Dog",
+    votes: generateLikeCount()
 }, {
     id: 2,
     name: "Millie",
-    type: "Dog"
+    type: "Dog",
+    votes: generateLikeCount()
 }
 ];
 
