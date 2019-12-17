@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import animals from './seed.js';
 
+
 class AnimalList extends React.Component {
     state = {
         animals: [],
@@ -41,7 +42,7 @@ class AnimalList extends React.Component {
         ));
 
     return (
-        <div className='ui unstackable items'>
+        <div className='ui'>
           {animalComponents}
         </div>
     );
@@ -60,10 +61,10 @@ class Animal extends React.Component {
   }
   render() {
     return (
-      <div className='item'>
-          {this.props.name}
-          {this.props.type}
-          {this.props.votes}
+      <div className='item card'>
+          <div className='header'>{this.props.name}</div>
+          <div className='content'>{this.props.type}</div>
+          <div className='content'>{this.props.votes}</div>
           <a onClick={this.handleLike}>
               <i className={'large caret up icon'}/>
           </a>
