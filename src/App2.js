@@ -56,5 +56,23 @@ class EditableAnimal extends React.Component {
     } //render()
 } //EditableAnimal
 
+class AnimalForm extends React.Component {
+    render() {
+        const submitText = this.props.name ? 'Update' : 'Create';
 
+        return (
+            <div className='ui centered card'>
+                <div className='content'>
+                    <div className='ui form'>
+                        <div className='field'>
+                            <label>Name</label>
+                            <input type='text' defaultValue={this.props.name} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        )
+    }
+}
 
